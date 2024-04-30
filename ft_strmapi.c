@@ -6,13 +6,13 @@
 /*   By: hnakayam <hnakayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 05:29:24 by hnakayam          #+#    #+#             */
-/*   Updated: 2024/04/27 12:51:11 by hnakayam         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:24:59 by hnakayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*make_new(char *s)
+static char	*make_new(char *s)
 {
 	char	*ans;
 	size_t	len;

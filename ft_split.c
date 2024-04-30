@@ -6,13 +6,13 @@
 /*   By: hnakayam <hnakayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 05:26:33 by hnakayam          #+#    #+#             */
-/*   Updated: 2024/04/27 19:28:13 by hnakayam         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:23:23 by hnakayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*nobu_strcpy(char *ans, char const *s, int start, int len)
+static char	*nobu_strcpy(char *ans, char const *s, int start, int len)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ char	*nobu_strcpy(char *ans, char const *s, int start, int len)
 	return (ans);
 }
 
-void	all_free(char **ans, int i)
+static void	all_free(char **ans, int i)
 {
 	while (i > 0)
 	{
@@ -36,7 +36,7 @@ void	all_free(char **ans, int i)
 	free(ans);
 }
 
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	count;
 	int	flag;
@@ -61,7 +61,7 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
-char	**rest_of_split(char const *s, char c, char **ans, int count)
+static char	**rest_of_split(char const *s, char c, char **ans, int count)
 {
 	int	i;
 	int	start;

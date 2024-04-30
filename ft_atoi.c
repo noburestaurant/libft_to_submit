@@ -6,48 +6,39 @@
 /*   By: hnakayam <hnakayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 05:15:44 by hnakayam          #+#    #+#             */
-/*   Updated: 2024/04/27 20:16:51 by hnakayam         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:36:27 by hnakayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	rest_of_atoi(int sign, unsigned long ans)
-{
-	if (ans > LONG_MAX && sign == 1)
-		return ((int)LONG_MAX);
-	if (ans - 1 > LONG_MAX && sign == -1 && ans != 0)
-		return ((int)LONG_MIN);
-	if (ans == 2147483648 && sign == -1)
-		return (-2147483648);
-	return ((int)ans * sign);
-}
-
 int	ft_atoi(const char *str)
 {
-	int				i;
-	int				sign;
-	unsigned long	ans;
+	int		sign;
+	long	ans;
 
-	i = 0;
 	ans = 0;
 	sign = 1;
-	while (('\t' <= str[i] && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (('\t' <= *str && *str <= '\r') || *str == ' ')
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign *= -1;
-		i++;
+		str++;
 	}
-	while ('0' <= str[i] && str[i] <= '9')
+	while ('0' <= *str && *str <= '9')
 	{
-		if (ans > ans * 10 + str[i] - '0')
-			return (0);
-		ans = ans * 10 + str[i] - '0';
-		i++;
+		if (sign == 1 && (ans > LONG_MAX / 10
+				|| ans * 10 > LONG_MAX - (*str - '0')))
+			return ((int)LONG_MAX);
+		if (sign == -1 && (ans > LONG_MAX / 10
+				|| ans * 10 - 1 > LONG_MAX - *str + '0'))
+			return ((int)LONG_MIN);
+		ans = ans * 10 + *str - '0';
+		str++;
 	}
-	return (rest_of_atoi(ans, sign));
+	return ((int)ans * sign);
 }
 
 // #include <stdio.h>

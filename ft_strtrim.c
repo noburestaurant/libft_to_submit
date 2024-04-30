@@ -6,13 +6,13 @@
 /*   By: hnakayam <hnakayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 05:31:43 by hnakayam          #+#    #+#             */
-/*   Updated: 2024/04/27 18:54:30 by hnakayam         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:25:37 by hnakayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	check(char const *set, char c)
+static int	check(char const *set, char c)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	check(char const *set, char c)
 	return (0);
 }
 
-int	search_end(char const *s1, char const *set)
+static int	search_end(char const *s1, char const *set)
 {
 	size_t	len_set;
 	int		end;
@@ -38,7 +38,7 @@ int	search_end(char const *s1, char const *set)
 	return (end);
 }
 
-int	search_start(char const *s1, char const *set)
+static int	search_start(char const *s1, char const *set)
 {
 	int		start;
 
